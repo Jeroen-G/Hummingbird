@@ -45,6 +45,6 @@ final class OpenGraphRequiredMetaTags implements ValidatorInterface
 
     public function getErrorMessage(): string
     {
-        return 'Your page contains more than one <h1> tag.';
+        return 'Your page is missing the open graph description, image, title, type, or url.';
     }
 }

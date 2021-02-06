@@ -52,13 +52,14 @@ class EvaluateUrlCommand extends Command
         $document = $this->collector->collect($url, CollectorInterface::PARSE_URL);
 
         foreach ($tests as $test) {
-            $output->writeln('✓ '. $test->getSubject());
-
             if($test->validate($document) === false) {
                 $this->passed = false;
                 $output->writeln("<error>An error occurred while evaluating {$url}</error>");
                 $output->writeln("<error>{$test->getErrorMessage()}</error>");
+                continue;
             }
+
+            $output->writeln('✓ '. $test->getSubject());
         }
 
         $output->writeln("<info>Evaluated {$url}</info>\n");

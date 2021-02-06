@@ -1,0 +1,45 @@
+name: Main CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+
+    strategy:
+      matrix:
+        php: [8.0]
+        experimental: [false]
+#         include:
+#           - php: 8.1
+#             experimental: true
+
+    name: PHP${{ matrix.php }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        coverage: xdebug
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-suggest --no-interaction --optimize-autoloader
+
+    - name: Execute tests
+      run: vendor/bin/phpunit --testdox --colors=always
+
+    - name: Build the Docker image
+      run: docker build . --tag jeroeng/hummingbird:dev
+
+    - name: Push to Docker Hub
+      if: github.event_name != 'pull_request'
+      run: docker login -u="jeroeng" -p="${{ secrets.DOCKERHUB_TOKEN }}" && docker push jeroeng/hummingbird
