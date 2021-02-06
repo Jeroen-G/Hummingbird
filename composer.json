@@ -1,0 +1,31 @@
+{
+    "name": "jeroen-g/hummingbird",
+    "description": "Validate your DOM to be SEO-proof.",
+    "authors": [
+        {
+            "name": "Jeroen",
+            "email": "jgroenendijk@enrise.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "symfony/console": "^5.2",
+        "paquettg/php-html-parser": "^3.1",
+        "webmozart/assert": "^1.9"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.2",
+        "infection/infection": "^0.21.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "JeroenG\\Hummingbird\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JeroenG\\Hummingbird\\Tests\\": "tests/"
+        }
+    }
+}
