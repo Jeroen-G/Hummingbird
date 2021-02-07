@@ -3,6 +3,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use JeroenG\Hummingbird\Domain\ValidatorRegistry;
 use JeroenG\Hummingbird\Infrastructure\Collector;
 use JeroenG\Hummingbird\Infrastructure\Console;
 use PHPHtmlParser\Dom;
@@ -10,6 +11,8 @@ use Symfony\Component\Console\Application;
 
 $application = new Application();
 
-$application->add(new Console\EvaluateUrlCommand(new Collector(new Dom())));
+$registry = new ValidatorRegistry(require __DIR__.'/../src/config/registry.php');
+
+$application->add(new Console\EvaluateUrlCommand(new Collector(new Dom()), $registry));
 
 $application->run();
