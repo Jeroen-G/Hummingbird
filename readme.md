@@ -1,7 +1,7 @@
 # Hummingbird
 
-![Docker Pulls](https://img.shields.io/docker/pulls/jeroeng/hummingbird?style=flat-square)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Jeroen-G/Hummingbird/Main%20CI?style=flat-square)
+[![CI][ico-pulls]][link-docker]
+[![CI][ico-actions]][link-actions]
 
 Validate your DOM to be SEO-proof.
 
@@ -54,9 +54,13 @@ php bin/console evaluate:url
 - [Jeroen][link-author]
 - [All Contributors][link-contributors]
 
-[link-author]: https://github.com/jeroen-g
-[link-contributors]: ../../contributors
-  
 ## License
 
 MIT. Please see the [license file](LICENSE) for more information.
+
+[link-docker]: https://hub.docker.com/r/jeroeng/hummingbird
+[ico-pulls]: https://img.shields.io/docker/pulls/jeroeng/hummingbird?style=flat-square
+[link-actions]: https://github.com/Jeroen-G/Hummingbird/actions
+[ico-actions]: https://img.shields.io/github/workflow/status/Jeroen-G/Hummingbird/Main%20CI?style=flat-square
+[link-author]: https://github.com/jeroen-g
+[link-contributors]: ../../contributors 
