@@ -1,10 +1,14 @@
 {
     "name": "jeroen-g/hummingbird",
     "description": "Validate your DOM to be SEO-proof.",
+    "homepage": "https://jeroen-g.github.io/Hummingbird/",
+    "keywords": ["Hummingbird", "SEO", "DOM", "validate"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Jeroen",
-            "email": "jgroenendijk@enrise.com"
+            "email": "jeroengjeroeng@gmail.com",
+            "homepage": "https://jeroeng.dev"
         }
     ],
     "require": {
@@ -16,7 +20,8 @@
     "require-dev": {
         "symfony/var-dumper": "^5.2",
         "infection/infection": "^0.21.0",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "symplify/easy-coding-standard": "^9.1"
     },
     "autoload": {
         "psr-4": {
