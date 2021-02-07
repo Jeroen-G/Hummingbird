@@ -1,11 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JeroenG\Hummingbird\Infrastructure\Console;
 
 use JeroenG\Hummingbird\Application\CollectorInterface;
 use JeroenG\Hummingbird\Domain\ValidatorRegistry;
-use JeroenG\Hummingbird\Domain\Validators\AllowOnlyOneH1;
-use JeroenG\Hummingbird\Domain\Validators\OpenGraphRequiredMetaTags;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,8 +15,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class EvaluateUrlCommand extends Command
 {
     protected static $defaultName = 'evaluate:url';
+
     private CollectorInterface $collector;
+
     private bool $passed = true;
+
     private ValidatorRegistry $validatorRegistry;
 
     public function __construct(CollectorInterface $collector, ValidatorRegistry $validatorRegistry)
@@ -54,13 +57,13 @@ class EvaluateUrlCommand extends Command
         $document = $this->collector->collect($url, CollectorInterface::PARSE_URL);
 
         foreach ($assertions as $validator) {
-            if($validator->validate($document) === false) {
+            if ($validator->validate($document) === false) {
                 $this->passed = false;
                 $output->writeln("<error>{$validator->getErrorMessage()}</error>");
                 continue;
             }
 
-            $output->writeln('✓ '. $validator->getSubject());
+            $output->writeln('✓ ' . $validator->getSubject());
         }
 
         $output->writeln("<info>Evaluated {$url}</info>\n");

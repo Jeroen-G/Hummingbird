@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace JeroenG\Hummingbird\Domain;
 
-use JeroenG\Hummingbird\Domain\Validators\AllowOnlyOneH1;
-use JeroenG\Hummingbird\Domain\Validators\OpenGraphRequiredMetaTags;
-
 final class ValidatorRegistry
 {
     public function __construct(
         private array $validators
-    ){}
+    ) {
+    }
 
     public function all(): array
     {
@@ -22,7 +20,7 @@ final class ValidatorRegistry
     {
         $matches = array_filter(
             $this->validators,
-            fn($key) => in_array($key, $keys, true),
+            fn ($key) => in_array($key, $keys, true),
             ARRAY_FILTER_USE_KEY
         );
 
@@ -31,6 +29,6 @@ final class ValidatorRegistry
 
     private function make(array $validators): array
     {
-        return array_map(fn($validator) => new $validator(), array_values($validators));
+        return array_map(fn ($validator) => new $validator(), array_values($validators));
     }
 }

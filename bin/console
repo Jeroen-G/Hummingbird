@@ -11,7 +11,7 @@ use Symfony\Component\Console\Application;
 
 $application = new Application();
 
-$registry = new ValidatorRegistry(require __DIR__.'/../src/config/registry.php');
+$registry = new ValidatorRegistry(require __DIR__.'/../config/registry.php');
 
 $application->add(new Console\EvaluateUrlCommand(new Collector(new Dom()), $registry));
 

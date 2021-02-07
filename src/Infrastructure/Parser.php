@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace JeroenG\Hummingbird\Infrastructure;
 
-use ArrayAccess;
-use JeroenG\Hummingbird\Application\DomMapper;
 use JeroenG\Hummingbird\Application\ParserInterface;
 use JeroenG\Hummingbird\Domain\Document;
 use JeroenG\Hummingbird\Domain\Element;
@@ -17,7 +15,8 @@ final class Parser implements ParserInterface
 {
     public function __construct(
         private DomInterface $dom
-    ){}
+    ) {
+    }
 
     public function find(string $selector): Document
     {
@@ -41,6 +40,6 @@ final class Parser implements ParserInterface
 
     private function mapArray(array $found): array
     {
-        return array_map(fn($item) => $this->mapElement($item), $found);
+        return array_map(fn ($item) => $this->mapElement($item), $found);
     }
 }

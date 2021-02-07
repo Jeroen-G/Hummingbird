@@ -11,7 +11,8 @@ final class Collector implements CollectorInterface
 {
     public function __construct(
         private DomInterface $dom
-    ){}
+    ) {
+    }
 
     public function collect(string $source, string $type = self::PARSE_STRING): Parser
     {

@@ -9,7 +9,8 @@ final class Element
     public function __construct(
         private string $html,
         private string $content,
-    ){}
+    ) {
+    }
 
     public function getHtml(): string
     {

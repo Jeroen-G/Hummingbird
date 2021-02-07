@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JeroenG\Hummingbird\Tests\Integration\Validators;
 
 use JeroenG\Hummingbird\Domain\Validators\ImagesMustHaveAnAltTag;
-use JeroenG\Hummingbird\Domain\Validators\MaximumTitleTagLength;
 use JeroenG\Hummingbird\Tests\Support\WithCollector;
 use PHPUnit\Framework\TestCase;
 

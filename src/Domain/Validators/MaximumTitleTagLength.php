@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JeroenG\Hummingbird\Domain\Validators;
 
 use JeroenG\Hummingbird\Application\ParserInterface;
@@ -20,7 +22,7 @@ final class MaximumTitleTagLength implements ValidatorInterface
 
         $content = $tag->getContent();
 
-        return strlen($content) <= 55;
+        return mb_strlen($content) <= 55;
     }
 
     public function getSubject(): string

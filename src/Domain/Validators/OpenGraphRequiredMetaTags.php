@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JeroenG\Hummingbird\Domain\Validators;
 
 use JeroenG\Hummingbird\Application\ParserInterface;
@@ -13,7 +15,7 @@ final class OpenGraphRequiredMetaTags implements ValidatorInterface
     {
         $document = $parser->find('meta');
 
-        $html = implode(' ', array_map(fn(Element $element) => $element->getHtml(), $document->getElements()));
+        $html = implode(' ', array_map(fn (Element $element) => $element->getHtml(), $document->getElements()));
 
         foreach ($this->openGraphs as $openGraph) {
             if (!str_contains($html, $openGraph)) {

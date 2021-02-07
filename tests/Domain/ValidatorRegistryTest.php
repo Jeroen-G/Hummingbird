@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JeroenG\Hummingbird\Tests\Domain;
 
 use JeroenG\Hummingbird\Domain\ValidatorRegistry;
