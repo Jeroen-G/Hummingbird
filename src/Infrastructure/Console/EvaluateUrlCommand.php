@@ -56,7 +56,6 @@ class EvaluateUrlCommand extends Command
         foreach ($assertions as $validator) {
             if($validator->validate($document) === false) {
                 $this->passed = false;
-                $output->writeln("<error>An error occurred while evaluating {$url}</error>");
                 $output->writeln("<error>{$validator->getErrorMessage()}</error>");
                 continue;
             }
