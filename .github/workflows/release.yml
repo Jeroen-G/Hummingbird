@@ -1,0 +1,44 @@
+name: Release CI
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    continue-on-error: false
+
+    strategy:
+      matrix:
+        php: [8.0]
+
+    name: PHP${{ matrix.php }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+
+      - name: Get the tagged version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+      - name: Install dependencies
+        run: composer install --no-dev --prefer-dist --no-suggest --no-interaction --optimize-autoloader
+
+      - name: Build the Docker image
+        run: docker build . --tag jeroeng/hummingbird:${{ steps.get_version.outputs.VERSION }}
+
+      - name: Push to Docker Hub
+        if: github.event_name != 'pull_request'
+        run: docker login -u="jeroeng" -p="${{ secrets.DOCKERHUB_TOKEN }}" && docker push jeroeng/hummingbird
+
