@@ -11,14 +11,14 @@ final class OpenGraphRequiredMetaTags implements ValidatorInterface
 
     public function validate(ParserInterface $parser): bool
     {
-        $tags = $parser->find('meta');
+        $document = $parser->find('meta');
 
-        if ($tags->count() === 0) {
+        if ($document->count() < count($this->openGraphs)) {
             return false;
         }
 
         /** @var Element $tag */
-        foreach ($tags as $tag) {
+        foreach ($document->getElements() as $tag) {
             if (!$this->singleTagIsValid($tag)) {
                 return false;
             }
@@ -30,12 +30,12 @@ final class OpenGraphRequiredMetaTags implements ValidatorInterface
     private function singleTagIsValid(Element $tag): bool
     {
         foreach ($this->openGraphs as $openGraph) {
-            if (!$tag->contains($openGraph)) {
-                return false;
+            if ($tag->contains($openGraph)) {
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     public function getSubject(): string
