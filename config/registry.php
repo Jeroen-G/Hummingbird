@@ -10,4 +10,5 @@ return [
     'title' => Validators\MaximumTitleTagLength::class,
     'alt' => Validators\ImagesMustHaveAnAltTag::class,
     'lang' => Validators\RequireHtmlLang::class,
+    'vp' => Validators\ViewportMetaTag::class,
 ];

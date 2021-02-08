@@ -22,6 +22,11 @@ final class Document
         return $this->elements;
     }
 
+    public function firstElement(): ?Element
+    {
+        return $this->elements[0];
+    }
+
     public function count(): int
     {
         return count($this->getElements());
