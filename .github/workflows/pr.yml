@@ -3,7 +3,6 @@ name: PR CI
 on:
   pull_request:
 
-
 jobs:
 
   build:
@@ -35,9 +34,12 @@ jobs:
       run: composer install --prefer-dist --no-suggest --no-interaction --optimize-autoloader
 
     - name: Execute tests
-      run: vendor/bin/phpunit --testdox --colors=always
+      run: vendor/bin/phpunit --testdox --colors=always --coverage-text
 
-    - name: Run Infection mutation tests
-      run: vendor/bin/infection --threads=4 --min-msi=30 -v -s
+    - name: Run Infection mutation tests for added and modified files
+      run: |
+        git fetch --depth=1 origin $GITHUB_BASE_REF
+        php vendor/bin/infection -j2 --git-diff-filter=AM --logger-github
 
-
+    - name: Build the Docker image
+      run: docker build . --tag jeroeng/hummingbird:test

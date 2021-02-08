@@ -35,7 +35,7 @@ jobs:
       run: composer install --prefer-dist --no-suggest --no-interaction --optimize-autoloader
 
     - name: Execute tests
-      run: vendor/bin/phpunit --testdox --colors=always
+      run: vendor/bin/phpunit --testdox --colors=always --coverage-text
 
     - name: Build the Docker image
       run: docker build . --tag jeroeng/hummingbird:dev
