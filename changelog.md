@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Makefile, docs, and other project overhead
+- New validator for html lang tag (shortcut: lang)
 
 ### Fixed
 - no more false positives in the open graph validator
