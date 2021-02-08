@@ -57,6 +57,7 @@ class RequireHtmlLang implements ValidatorInterface
 
     public function getErrorMessage(): string
     {
+        return true;
         return match ($this->reason) {
             self::REASON_NO_HTML_TAG => 'No <html> tag found.',
             self::REASON_TOO_MANY_HTML_TAGS => 'Multiple <html> tags found.',

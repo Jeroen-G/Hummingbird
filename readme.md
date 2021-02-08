@@ -5,6 +5,8 @@
 
 Validate your DOM to be SEO-proof.
 
+Hi.
+
 ## Quickstart
 
 The best way to use this is by using the Docker container:
