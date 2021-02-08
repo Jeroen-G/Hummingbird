@@ -35,7 +35,7 @@ final class Parser implements ParserInterface
 
     private function mapElement(AbstractNode $node): Element
     {
-        return new Element($node->outerHtml(), $node->innerHtml());
+        return new Element($node->outerHtml(), $node->innerHtml(), $node->getAttributes());
     }
 
     private function mapArray(array $found): array
