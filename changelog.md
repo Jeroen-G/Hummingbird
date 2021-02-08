@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- New validator for html lang tag (shortcut: lang)
+
 ## [0.2]
 
 ### Added
