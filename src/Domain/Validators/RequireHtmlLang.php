@@ -21,19 +21,20 @@ class RequireHtmlLang implements ValidatorInterface
 
     public function validate(ParserInterface $parser): bool
     {
-        $elements = $parser->find('html')->getElements();
-        if (0 === count($elements)) {
+        $document = $parser->find('html');
+
+        if (0 === $document->count()) {
             $this->reason = self::REASON_NO_HTML_TAG;
             return false;
         }
 
-        if (1 < count($elements)) {
+        if (1 < $document->count()) {
             $this->reason = self::REASON_TOO_MANY_HTML_TAGS;
             return false;
         }
 
         /** @var Element $htmlElement */
-        $htmlElement = $elements[0];
+        $htmlElement = $document->getElements()[0];
         $langAttr = $htmlElement->getAttribute('lang');
 
         if (null === $langAttr) {
@@ -51,14 +52,14 @@ class RequireHtmlLang implements ValidatorInterface
 
     public function getSubject(): string
     {
-        return 'There should be only one <html> tag with an should have a valid lang attribute.';
+        return 'There should be only one <html> tag and it should have a valid lang attribute.';
     }
 
     public function getErrorMessage(): string
     {
         return match ($this->reason) {
-            self::REASON_NO_HTML_TAG => 'No <html> tag found',
-            self::REASON_TOO_MANY_HTML_TAGS => 'Multiple <html> tags found',
+            self::REASON_NO_HTML_TAG => 'No <html> tag found.',
+            self::REASON_TOO_MANY_HTML_TAGS => 'Multiple <html> tags found.',
             self::REASON_NO_LANG_ATTR => 'No lang attribute found on the <html> tag.',
             self::REASON_INVALID_LANG => 'Invalid lang attribute. It should be an ISO language code of length 2.',
         };

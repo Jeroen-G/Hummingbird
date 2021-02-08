@@ -19,7 +19,7 @@ class RequireHtmlLangTest extends TestCase
         $this->validator = new RequireHtmlLang();
     }
 
-    public function test_it_passes_on_valid_document()
+    public function test_it_passes_on_valid_document(): void
     {
         $parser = $this->collector()->collect('<html lang="nl"></html>');
         $result = $this->validator->validate($parser);

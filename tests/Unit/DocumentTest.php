@@ -16,7 +16,7 @@ final class DocumentTest extends TestCase
         $element = new Element('<p>test</p>', 'test', []);
         $valid = new Document([$element]);
 
-        self::assertSame([$element], $valid->getElements(), );
+        self::assertSame([$element], $valid->getElements());
 
         $this->expectException(InvalidArgumentException::class);
         new Document(['test']);
