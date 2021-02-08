@@ -11,4 +11,5 @@ return [
     'alt' => Validators\ImagesMustHaveAnAltTag::class,
     'lang' => Validators\RequireHtmlLang::class,
     'vp' => Validators\ViewportMetaTag::class,
+    'atxt' => Validators\LinksMustHaveDescriptiveText::class,
 ];

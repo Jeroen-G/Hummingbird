@@ -8,5 +8,6 @@ title               | There must be a title tag and it must be no longer than 55
 alt                 | All images must have an alt tag
 lang                | The HTML opening tag should have a valid lang attribute
 vp                  | There should be a viewport meta tag with width and initial-scale set
+atxt                | Links should have a descriptive text
 
 If you have an idea for a new validator, be sure to open an issue!
