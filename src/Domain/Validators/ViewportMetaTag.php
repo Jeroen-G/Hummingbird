@@ -18,7 +18,7 @@ final class ViewportMetaTag implements ValidatorInterface
 
         $tag = $document->firstElement();
 
-        return $tagcontains('width') && $tagcontains('initial-scale');
+        return $tag?->contains('width') && $tag?->contains('initial-scale');
     }
 
     public function getSubject(): string
