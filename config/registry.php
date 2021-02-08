@@ -9,4 +9,5 @@ return [
     'og' => Validators\OpenGraphRequiredMetaTags::class,
     'title' => Validators\MaximumTitleTagLength::class,
     'alt' => Validators\ImagesMustHaveAnAltTag::class,
+    'lang' => Validators\RequireHtmlLang::class,
 ];
