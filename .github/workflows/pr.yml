@@ -1,0 +1,43 @@
+name: PR CI
+
+on:
+  pull_request:
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+
+    strategy:
+      matrix:
+        php: [8.0]
+        experimental: [false]
+#         include:
+#           - php: 8.1
+#             experimental: true
+
+    name: PHP${{ matrix.php }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        coverage: xdebug
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-suggest --no-interaction --optimize-autoloader
+
+    - name: Execute tests
+      run: vendor/bin/phpunit --testdox --colors=always
+
+    - name: Run Infection mutation tests
+      run: vendor/bin/infection --threads=4 --min-msi=30 -v -s
+
+
