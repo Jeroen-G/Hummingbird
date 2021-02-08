@@ -9,6 +9,7 @@ final class Element
     public function __construct(
         private string $html,
         private string $content,
+        private array $attributes,
     ) {
     }
 
@@ -20,6 +21,16 @@ final class Element
     public function getContent(): string
     {
         return $this->content;
+    }
+
+    public function getAttributes(): array
+    {
+        return $this->attributes;
+    }
+
+    public function getAttribute(string $name): ?string
+    {
+        return $this->attributes[$name] ?? null;
     }
 
     public function contains(string $needle): bool
