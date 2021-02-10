@@ -35,8 +35,11 @@ jobs:
       - name: Install dependencies
         run: composer install --no-dev --prefer-dist --no-suggest --no-interaction --optimize-autoloader
 
-      - name: Build the Docker image
+      - name: Build the Docker image for the tagged release
         run: docker build . --tag jeroeng/hummingbird:${{ steps.get_version.outputs.VERSION }}
+
+      - name: Build the Docker image for the latest tag
+        run: docker build . --tag jeroeng/hummingbird:latest
 
       - name: Push to Docker Hub
         if: github.event_name != 'pull_request'
