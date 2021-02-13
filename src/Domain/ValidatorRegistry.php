@@ -13,7 +13,8 @@ final class ValidatorRegistry
 
     public function all(): array
     {
-        return $this->make($this->validators);
+        $withoutProfiles = array_filter($this->validators, fn ($item) => !is_array($item));
+        return $this->make($withoutProfiles);
     }
 
     public function match(array $keys): array
@@ -24,11 +25,30 @@ final class ValidatorRegistry
             ARRAY_FILTER_USE_KEY
         );
 
-        return $this->make($matches);
+        return $this->flatten($this->make($matches));
     }
 
     private function make(array $validators): array
     {
-        return array_map(fn ($validator) => new $validator(), array_values($validators));
+        return array_map(
+            fn ($validator) =>
+            is_array($validator)
+                ? $this->match($validator)
+                : new $validator(),
+            array_values($validators)
+        );
+    }
+
+    private function flatten(array $made): array
+    {
+        // If it contains a profile of validators (i.e. an array), we need to 'flatten' the results.
+
+        foreach ($made as $key => $value) {
+            if (!is_array($value)) {
+                $made[$key] = [$value];
+            }
+        }
+
+        return array_merge(...$made);
     }
 }
