@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
+- New validator for meta description (shortcut: mdesc)
+
+## [0.3]
+
+### Added
 - New validator for html lang tag (shortcut: lang)
 - New validator for viewport tag (shortcut: vp)
 - New validator for descriptive link texts (shortcut: atxt)
