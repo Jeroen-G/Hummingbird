@@ -16,6 +16,7 @@ You may replace `dev` with a tagged release number for more stability.
 # Hummingbird documentation
 
 - [Validators and assertions](validators.md)
+- [Profiles](profiles.md)
 
 [link-docker]: https://hub.docker.com/r/jeroeng/hummingbird
 [ico-pulls]: https://img.shields.io/docker/pulls/jeroeng/hummingbird?style=flat-square

@@ -14,4 +14,9 @@ return [
     'atxt' => Validators\LinksMustHaveDescriptiveText::class,
     'mdesc' => Validators\MetaDescriptionLength::class,
     'canon' => Validators\CanonicalLink::class,
+    'auvid' => Validators\NoAutoplayingVideos::class,
+
+    'minimal' => ['h1', 'lang', 'alt'],
+    'a11y' => ['h1', 'alt', 'atxt', 'auvid'],
+    'media' => ['og', 'alt', 'auvid'],
 ];
