@@ -6,10 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.0]
+
 ### Added
 - New validator for autplaying videos (shortcut: auvid)
 - New validator for meta description (shortcut: mdesc)
 - New validator for canonical links (shortcut: canon)
+- Profiles: collections of validators (#13)
 
 ## [0.3]
 
