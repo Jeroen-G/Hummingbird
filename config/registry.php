@@ -12,5 +12,6 @@ return [
     'lang' => Validators\RequireHtmlLang::class,
     'vp' => Validators\ViewportMetaTag::class,
     'atxt' => Validators\LinksMustHaveDescriptiveText::class,
-    'mdesc' => Validators\MetaDescriptionLength::class
+    'mdesc' => Validators\MetaDescriptionLength::class,
+    'canon' => Validators\CanonicalLink::class,
 ];

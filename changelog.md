@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - New validator for meta description (shortcut: mdesc)
+- New validator for canonical links (shortcut: canon)
 
 ## [0.3]
 
