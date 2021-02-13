@@ -40,6 +40,7 @@ jobs:
       run: vendor/bin/phpunit --testdox --colors=always --coverage-text
 
     - name: Run Infection mutation tests for added and modified files
+      if: matrix.experimental == false
       run: |
         git fetch --depth=1 origin $GITHUB_BASE_REF
         php vendor/bin/infection -j2 --git-diff-filter=AM --logger-github
