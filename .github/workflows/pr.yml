@@ -31,7 +31,7 @@ jobs:
         coverage: xdebug
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-suggest --no-interaction --optimize-autoloader
+      run: composer install --prefer-dist --no-suggest --no-interaction --optimize-autoloader --ignore-platform-reqs
 
     - name: Check codestyle
       run: vendor/bin/ecs check --config=easy-coding-standard.php --no-progress-bar .
