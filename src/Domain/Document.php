@@ -17,6 +17,7 @@ final class Document
         $this->elements = $elements;
     }
 
+    /** @return Element[] */
     public function getElements(): array
     {
         return $this->elements;
