@@ -10,7 +10,7 @@ Validate your DOM to be SEO-proof.
 The best way to use this is by using the Docker container:
 
 ```bash
-docker run --it --rm jeroeng/hummingbird:dev evaluate:url github.com
+docker run -t --rm jeroeng/hummingbird:v1.0 evaluate:url https://github.com
 ```
 
 You may replace `dev` with a tagged release number for more stability.
