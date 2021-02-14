@@ -43,5 +43,5 @@ jobs:
 
       - name: Push to Docker Hub
         if: github.event_name != 'pull_request'
-        run: docker login -u="jeroeng" -p="${{ secrets.DOCKERHUB_TOKEN }}" && docker push jeroeng/hummingbird
+        run: docker login -u="jeroeng" -p="${{ secrets.DOCKERHUB_TOKEN }}" && docker push jeroeng/hummingbird:latest && docker push jeroeng/hummingbird:${{ steps.get_version.outputs.VERSION }}
 
